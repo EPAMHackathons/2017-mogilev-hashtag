@@ -71,7 +71,7 @@
 					<label class="control-label" for="command">Payload</label>
 
 					<div class="controls">
-						<textarea  name="command" id="command" required>{$item.command|escape}</textarea>
+						<textarea  name="command" id="command">{$item.command|escape}</textarea>
 					</div>
 				</div>
 
