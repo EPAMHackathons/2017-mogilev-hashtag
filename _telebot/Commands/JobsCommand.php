@@ -17,7 +17,7 @@ use Longman\TelegramBot\Request;
 /**
  * User "/jobs" command
  */
-class JobsCommand extends UserCommand
+class JobsCommand extends HelperCommand
 {
     /**#@+
      * {@inheritdoc}
@@ -32,7 +32,7 @@ class JobsCommand extends UserCommand
     /**
      * {@inheritdoc}
      */
-    public function execute()
+    public function do_execute()
     {
         $chat_id = $this->getMessage()->getChat()->getId();
         $jobs = [

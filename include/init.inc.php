@@ -2,6 +2,7 @@
 if (!defined('DOC_ROOT')) define('DOC_ROOT', get_docroot());
 
 require_once(DOC_ROOT . '/include/config.inc.php');
+require_once(DOC_ROOT . '/include/teleconfig.inc.php');
 
 auto_include(DOC_ROOT . '/include/misc', DOC_ROOT . '/include/misc');
 auto_include(DOC_ROOT . '/include/mysql', DOC_ROOT . '/include/mysql');
