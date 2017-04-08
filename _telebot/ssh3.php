@@ -1,9 +1,12 @@
 <?php
-use Ssh\Client;
-use Ssh\Auth\Password;
+require __DIR__ . '/../vendor/autoload.php';
 
-$auth = new Password($this->creds['login'], $this->creds['password']);
-$client = new Client($this->server['ip']);
+use Ssh\Client;
+use Ssh\Auth\PublicKey;
+
+
+$auth = new PublicKey('wisewallet', '../keys/1_wisewallet.pub', '../keys/1_wisewallet.pri', '12341234');
+$client = new Client('5.9.99.210');
 $client->connect()->authenticate($auth);
 
 $res = $client->exec('id');;
