@@ -10,23 +10,10 @@ $dev_config = array(
         'dbpass' => '',
 
         'admin_folder' => '_admin',
-        'cert_dir' => 'certificates',
-        'goodsDb' => 'ulmart2',
-        'goodsDb_auth' => ['host' => '192.168.6.119:4040', 'user' => 'dz', 'pass' => 'dz'],
-
         'TERM_PROGRAM' => ['apple_terminal'],
-        'smtp' => [
-            'host' => 'ssl://smtp.mail.ru',
-            'port' => 465,
-            'user' => 'leaveittothem@mail.ru',
-            'pass' => 'e29c5f0c8a',
-            'from' => 'leaveittothem@mail.ru'
-        ],
+
     )
 );
-if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == 'podarki:11111') {
-    $dev_config['ru']['dbpass'] = 'root';
-}
 
 $uat_config = array(
     'ru' => array(
@@ -38,18 +25,7 @@ $uat_config = array(
         'dbuser' => 'podarki',
         'dbpass' => 'gv24verliuhqfre7qewrflhi7fqr',
 
-        'admin_folder' => 'panel_control_',
-        'cert_dir' => 'certificates',
-        'goodsDb' => 'ulmart2',
-        'goodsDb_auth' => ['host' => '192.168.6.119:4040', 'user' => 'dz', 'pass' => 'dz'],
-        'smtp' => [
-            'host' => 'ssl://smtp.gmail.com',
-            'port' => 465,
-            'user' => 'antalos@gmail.com',
-            'pass' => 'deldel',
-            'from' => 'antalos@gmail.com'
-        ],
-
+        'admin_folder' => '_admin',
 
     )
 );
@@ -57,26 +33,16 @@ $uat_config = array(
 
 $prod_config = array(
     'ru' => array(
-        'hosts' => array('podarki.ulmart.ru', 'www.podarki.ulmart.ru'),
-        'def_host' => 'domain.com',
+        'hosts' => array('telehelp.mediapark-group.com', 'www.telehelp.mediapark-group.com'),
+        'def_host' => 'telehelp.mediapark-group.com',
 
-        'db' => 'ulmart2_podarki',
-        'dbhost' => '192.168.6.119',
-        'dbuser' => 'podarki',
-        'dbpass' => 'Aev1ie6Xee',
+        'db' => 'telehelp_mediapa',
+        'dbhost' => 'localhost',
+        'dbuser' => 'telehelp_mediapa',
+        'dbpass' => 'HT5uCD5lG4KCwqR7',
 
-        'admin_folder' => 'panel_control_',
+        'admin_folder' => '_admin',
         'cert_dir' => 'certificates',
-        'goodsDb' => 'ulmart2',
-        'goodsDb_auth' => ['host' => '192.168.6.119:4040', 'user' => 'dz', 'pass' => 'dz'],
-        'smtp' => [
-            'host' => 'mailsite.ulmart.ru',
-            'port' => 25,
-            'user' => 'podarki@ulmart.ru',
-            'pass' => '',
-            'from' => 'podarki@ulmart.ru'
-        ],
-
         'PWD' => ['/home/savchenkov.a/www/_cronjobs']
     )
 );
@@ -115,7 +81,6 @@ $_SERVER['prod_config'] = $prod_config;
 
 $_SERVER['mysql_auth'] = array(
     $config['db'] => array('host' => $config['dbhost'], 'user' => $config['dbuser'], 'pass' => $config['dbpass']),
-    $config['goodsDb'] => $config['goodsDb_auth']
 );
 
 

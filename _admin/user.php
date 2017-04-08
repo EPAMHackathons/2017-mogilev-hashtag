@@ -37,6 +37,7 @@ switch ($act) {
 
     case 'edit':
         $user = new user($id);
+        $res = $user->getServersForExec();
         $user = $user->to_array();
 
         $tpl->assign('user', $user);
