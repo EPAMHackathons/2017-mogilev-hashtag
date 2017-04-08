@@ -35,7 +35,10 @@ class user extends db_row
             foreach ($permissions as $p) {
                 $res['permissions_servers']['jobs'][$p['server_id']][] = $p['job_id'];
                 $res['permissions_servers']['creds'][$p['server_id']][] = $p['credential_id'];
+
+                $res['job_creds'][ $p['server_id'] ][ $p['job_id'] ] = $p['credential_id'];
             }
+
 
         }
         return $res;
