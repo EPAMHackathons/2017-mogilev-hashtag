@@ -34,6 +34,8 @@
     </li>
     <li  {if $menu_cat eq 'user' }class="active"{/if}>
     <a href="/_admin/user.php" title="Users">
+    <li>
+        <a href="/_admin/user.php" title="Users">
             <div class="helper-font-24"><i class="elusive-list"></i></div>
             <span class="sidebar-text">Users</span>
         </a>
