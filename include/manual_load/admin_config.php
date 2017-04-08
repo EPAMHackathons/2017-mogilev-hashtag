@@ -10,7 +10,9 @@
         'goods' => 'Товары для слайдера',
         'users' => 'Пользователи',
         'jobs' => 'Jobs',
-        'job_types' => 'Job types'
+        'job_types' => 'Job types',
+        'servers_credentials' => 'Настройки сервера',
+        'servers' => 'Настройки сервера',
 	);
 
 
