@@ -247,3 +247,9 @@ div.uploader span.filename {
 .sidebar > li{
     height: auto !important;
 }
+
+.form-alex input[type="text"],
+.form-alex textarea,
+.form-alex select {
+    width: 96%;
+}

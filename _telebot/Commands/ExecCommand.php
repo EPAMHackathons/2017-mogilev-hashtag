@@ -1,4 +1,5 @@
 <?php
+
 namespace Longman\TelegramBot\Commands\UserCommands;
 
 use Longman\TelegramBot\Commands\UserCommand;
@@ -34,11 +35,12 @@ class ExecCommand extends HelperCommand
         $chat_id = $message->getChat()->getId();
 
         $message_id = $message->getMessageId();
-        $command    = trim($message->getText(true));
+        $command = trim($message->getText(true));
 
         $data = [
-            'chat_id'      => $chat_id,
-            'text'         => 'cmd is: ' . $command
+            'chat_id' => $chat_id,
+            'parse_mode' => 'MARKDOWN',
+            'text' => 'cmd is: ' . $command
         ];
 
         Request::sendMessage($data);
@@ -47,7 +49,7 @@ class ExecCommand extends HelperCommand
         $client = new Client('148.251.120.12');
 
         $client->connect()->authenticate($auth);
-        $data['text'] = $client->exec($command);
+        $data['text'] = '```'.$client->exec($command).'```';
 
         return Request::sendMessage($data);
     }
