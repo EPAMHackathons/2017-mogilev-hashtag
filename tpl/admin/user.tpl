@@ -43,5 +43,7 @@
 			</div>
 		</div>
 	</div>
+{elseif $act eq 'edit'}
+
 {/if}
 	

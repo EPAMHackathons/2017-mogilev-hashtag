@@ -37,16 +37,11 @@
 
 	<li {if $menu_cat eq 'user' }class="active"{/if}>
 		<a href="/_admin/user.php" title="Users">
-			<div class="helper-font-24"><i class="elusive-list"></i></div>
+			<div class="helper-font-24"><i class="elusive-user"></i></div>
 			<span class="sidebar-text">Users</span>
 		</a>
 	</li>
-	<li {if $menu_cat eq 'users_permissions' }class="active"{/if}>
-		<a href="/_admin/users_permissions.php" title="Users Premissions">
-			<div class="helper-font-24"><i class="elusive-list"></i></div>
-			<span class="sidebar-text">Users Permissions</span>
-		</a>
-	</li>
+
 
 	{if $admin_user->has_permission('config') || $admin_user->has_permission('users') }
 		<li>

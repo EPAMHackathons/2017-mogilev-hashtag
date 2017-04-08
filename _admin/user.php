@@ -4,6 +4,7 @@ require_once('../include/init.inc.php');
 $act = get_postget_var('act');
 $id = get_postget_var('id');
 $ru = 'user.php';
+$tpl->assign('act', $act);
 
 switch ($act) {
     case 'activate':
@@ -12,6 +13,13 @@ switch ($act) {
         db_query("UPDATE user SET active='$newState' WHERE id = '$id' ");
         flashbag_put('Изменения сохранены');
         redirect($ru);
+        break;
+
+
+    case 'edit':
+        $user = new user($id);
+        $user = $user->to_array();
+        $tpl->assign('user', $user);
         break;
 
 }
