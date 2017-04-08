@@ -53,6 +53,7 @@ $prod_config = array(
 //======== END OF configuration
 
 $config = get_config($dev_config);
+print_r($config);
 if (!empty($config)) {
     define('DEV_SERVER', '1');
 
@@ -65,9 +66,14 @@ if (!empty($config)) {
 } else {
     $config = get_config($prod_config, true);
     error_reporting(0); //do not display any errors on production
-    ini_set('display_errors', 0);
 
-    //error_reporting(E_ALL); ini_set('display_errors', 1);
+
+    if(!empty($_SERVER['force_errors'])) {
+        ini_set('display_errors', 0);
+    } else {
+        error_reporting(E_ALL); ini_set('display_errors', 1);
+    }
+
 }
 
 
