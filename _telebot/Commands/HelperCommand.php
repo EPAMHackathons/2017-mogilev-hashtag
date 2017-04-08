@@ -16,7 +16,7 @@ class HelperCommand extends UserCommand
             'text' => $text,
         ];
 
-        echo "Sen"
+        echo "Send";
         return Request::sendMessage($data);
     }
 
