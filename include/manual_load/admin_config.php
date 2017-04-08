@@ -8,7 +8,9 @@
 		'feedback_topics' => 'Темы обратной связи',
         'gifts' => 'Подарки',
         'goods' => 'Товары для слайдера',
-        'users' => 'Пользователи'
+        'users' => 'Пользователи',
+        'jobs' => 'Jobs',
+        'job_types' => 'Job types'
 	);
 
 

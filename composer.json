@@ -1,0 +1,39 @@
+{
+    "name": "alex/telebot",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Alexander Savchenkov",
+            "email": "alex@mediapark.lt"
+        }
+    ],
+    "repositories": [
+        {
+            "type":"package",
+            "package": {
+                "name": "oncesk/ssh2",
+                "version":"master",
+                "source": {
+                    "url": "https://github.com/oncesk/ssh2.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "autoload": {
+                    "classmap": ["src"]
+                }
+            }
+        }
+    ],
+
+    "require": {
+        "longman/telegram-bot": "^0.41.0",
+        "oncesk/ssh2": "master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ssh": "ssh2/src"
+        }
+    }
+
+}
