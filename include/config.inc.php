@@ -11,6 +11,7 @@ $dev_config = array(
 
         'admin_folder' => '_admin',
         'TERM_PROGRAM' => ['apple_terminal'],
+        'server_user' => 'ivan',
 
     )
 );
@@ -26,6 +27,7 @@ $uat_config = array(
         'dbpass' => 'gv24verliuhqfre7qewrflhi7fqr',
 
         'admin_folder' => '_admin',
+        'server_user' => 'telehelp_mediapark_group_com',
 
     )
 );
@@ -43,7 +45,8 @@ $prod_config = array(
 
         'admin_folder' => '_admin',
         'cert_dir' => 'certificates',
-        'PWD' => ['/home/savchenkov.a/www/_cronjobs']
+        'PWD' => ['/home/savchenkov.a/www/_cronjobs'],
+        'server_user' => 'telehelp_mediapark_group_com',
     )
 );
 

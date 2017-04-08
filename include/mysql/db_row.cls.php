@@ -362,7 +362,7 @@ class db_row
 
 			if (move_uploaded_file($file['tmp_name'], DOC_ROOT . '/' . $dir . $new)) {
                 umask(0);
-                chmod(DOC_ROOT . '/' . $dir . $new, '0600');
+                chmod(DOC_ROOT . '/' . $dir . $new, 0600);
 				db_query("UPDATE " . $this->table . " SET `" . $field . "`='$new' WHERE id = " . $this->fields['id']);
 			}
 		}
@@ -399,6 +399,8 @@ class db_row
             if (move_uploaded_file($file['tmp_name'], DOC_ROOT . '/' . $dir . $file_name)) {
                 umask(0);
                 chmod(DOC_ROOT . '/' . $dir . $file_name, 0640);
+                chown(DOC_ROOT . '/' . $dir . $file_name, $_SERVER['serv_config']['server_user']);
+
                 db_query("UPDATE " . $this->table . " SET `" . $field . "`='$file_name' WHERE id = " . $this->fields['id']);
             }
         }
