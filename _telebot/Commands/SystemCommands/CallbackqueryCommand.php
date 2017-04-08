@@ -53,8 +53,8 @@ class CallbackqueryCommand extends SystemCommand
             $serverId = $m[2];
             $credId = $m[3];
 
-            $job = new \JobRunner($jobId, $serverId, $credId);
-            if ($job->isOk) {
+            $job = JobFactory::exec($jobId, $serverId, $credId);
+            if ($job !== null) {
                 $data = [
                     'chat_id' => $chatId,
                     'parse_mode' => 'MARKDOWN',
