@@ -53,7 +53,7 @@ $prod_config = array(
 //======== END OF configuration
 
 $config = get_config($dev_config);
-print_r($config);
+
 if (!empty($config)) {
     define('DEV_SERVER', '1');
 
@@ -75,7 +75,7 @@ if (!empty($config)) {
     }
 
 }
-
+print_r($config);
 
 if (empty($config)) die('cant get config');
 
