@@ -1,0 +1,246 @@
+html, body {
+    height: 100%;
+}
+
+.form-alex input[type="text"] {
+    width: 96%;
+
+}
+
+.form-alex label.checkbox {
+    padding-left: 0;
+}
+
+.form-alex textarea.brief {
+    width: 70%;
+    height: 100px;
+}
+
+.w100 {
+    width: 100%;
+}
+
+td.actions a {
+    padding-right: 7px;
+}
+
+td.link a {
+    text-decoration: underline;
+}
+
+td.nonActive, td.nonActive a {
+    color: #d4d4d4;
+}
+
+.dataTables_filter {
+    float: right;
+}
+
+.dataTables_paginate {
+    float: right;
+    margin: 0;
+}
+
+.form-alex a {
+    text-decoration: underline;
+}
+
+.myCopyRight {
+    background-color: #d1d1d1;
+    position: absolute;
+    bottom: -1px;
+    left: 1px;
+    font-size: 10px;
+    width: 100%;
+}
+
+.myCopyRight a {
+    text-decoration: underline;
+}
+
+#datatables {
+    display: none;
+}
+
+.chosen {
+    width: 70%
+}
+
+.td_lvl0 {
+    padding-left: 0px;
+}
+
+.td_lvl1 {
+    padding-left: 30px;
+}
+
+.td_lvl2 {
+    padding-left: 60px;
+}
+
+.td_lvl3 {
+    padding-left: 90px;
+}
+
+.td_lvl4 {
+    padding-left: 120px;
+}
+
+.content > .content-body {
+    min-height: 810px
+}
+
+.groupTable a {
+    text-decoration: underline;
+}
+
+.goods a {
+    text-decoration: underline;
+}
+
+.paginator {
+    margin-bottom: 15px;
+}
+
+.paginator a, .paginator b {
+    width: 20px;
+    display: block;
+    float: left;
+}
+
+.form-horizontal .label-value, .label-value {
+    text-align: left;
+    padding-left: 23px;
+}
+
+#logoBox {
+    height: 50px;
+    background: #fff;
+    position: absolute;
+    top: 3px;
+    padding: 5px 20px 0 20px
+}
+
+#logoBox img {
+    height: 45px;
+}
+
+.controls textarea {
+    width: 70%;
+}
+
+div.uploader {
+    width: 250px;
+
+}
+
+div.uploader span.filename {
+    width: 142px;
+}
+
+.table tbody > tr.cat > td,
+.table tbody > tr.cat > th {
+    background-color: #c8c8c8;
+}
+.smallList li {
+    font-size: 12px;
+}
+.leftSmallCol {
+    width: 45%;
+    float: left;
+}
+
+.leftSmallCol input {
+    width: 96%;
+}
+.leftSmallCol .redactor_box, .leftSmallCol  .redactor_box textarea {
+    background-color: #fff;
+    width: auto;
+}
+.fileBox {
+    float: right;
+    width: 54%;
+}
+
+#multyimgup {
+
+}
+.fileinput-button {
+    position: relative;
+}
+.fileinput-button input {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+    direction: ltr;
+    cursor: pointer;
+}
+.fileHolder input {
+    display: none;
+}
+.fileBox .form-actions  {
+    padding-left: 0;
+    text-align: center;
+}
+.imgList {
+    overflow: hidden;
+}
+.imgListItem {
+    padding: 4px;
+    border: 1px solid #CDCDCD;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.imgListItem img {
+    max-width: 130px;
+    display: block;
+}
+
+.side-left {
+    height: 100%;
+}
+
+.sidebar {
+    height: 100%;
+}
+
+
+#branch_form .controls textarea {
+    max-width: 96%;
+    width: 96%;
+    height: 150px;
+    resize: vertical ;
+}
+#oms_form p {
+    margin-top: 5px;
+}
+#oms_form  .control-group {
+    margin-bottom: 0;
+}
+
+
+.sub-sidebar > li {
+    width: auto;
+}
+.sidebar > li.active > a {
+    cursor: pointer;
+}
+
+
+.redactor_box, .redactor_box textarea {
+    width: 99%;
+}
+
+#icon_show{
+    font-size:32px;
+    color:#fff;
+    background: none repeat scroll 0 0 #72b842;
+    padding:5px;
+    width:42px;
+}

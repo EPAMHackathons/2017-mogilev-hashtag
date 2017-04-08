@@ -1,2 +1,5 @@
 .idea
 /_telebot/vendor
+/vendor
+.DS_Store
+/tpl/tpl_c
