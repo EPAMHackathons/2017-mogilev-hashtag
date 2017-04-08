@@ -1,7 +1,7 @@
 <?
 	class user extends db_row {
 		
-		function __construct($id = NULL) {
+		function user($id = NULL) {
 			//$this->use_db = DB_USERS_NAME;
 			$this->table = 'user';
 			$this->pri_key = 'id';
@@ -17,6 +17,7 @@
 			$this->fields['username'] = NULL;
 			$this->fields['created_at'] = NULL;
 			$this->fields['updated_at'] = NULL;
+			$this->fields['active'] = NULL;
 			
 			parent::__construct($id);
 		}
@@ -33,7 +34,7 @@
 
 	class user_list extends db_list {
 
-		function __construct() {
+		function user_list() {
 			$this->single_element_class = 'user';
 			$this->table = 'user';
 			$this->sort_by = 'id';

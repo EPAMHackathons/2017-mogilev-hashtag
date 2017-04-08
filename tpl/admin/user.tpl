@@ -21,6 +21,11 @@
 				<tr data-itemid="{$items[i].id}" >
 					<td nowrap class="actions" >
 												<a href="?act=edit&id={$items[i].id}" title="Edit"><i class="icon-edit"></i></a>
+													{if $items[i].active eq '1'}
+								<a href="?act=deactivate&id={$items[i].id}" title="Отключить"><i class="icon-remove"></i></a>
+							{else}
+								<a href="?act=activate&id={$items[i].id}" title="Включить"><i class="icon-ok"></i></a>
+							{/if}
 												<a href="?act=delete&id={$items[i].id}{csrf_token}" title="Удалить" class="confirmMe"><i class="icon-trash"></i></a>
 						
 					</td>
@@ -98,6 +103,16 @@
 							<div class="controls">
 								<input type="text" class="grd-white" name="updated_at" id="updated_at" value="{$item.updated_at|escape}" required>
 															</div>
+						</div>
+									
+											<div class="control-group">
+							<label class="control-label">Активен</label>
+
+							<div class="controls">
+								<label class="checkbox">
+									<input type="checkbox" data-form="uniform" name="active" id="active1" value="1" {if $item.active eq '1'}checked="checked"{/if}>
+								</label>
+							</div>
 						</div>
 									
 				
