@@ -2,4 +2,4 @@
 /_telebot/vendor
 /vendor
 .DS_Store
-/tpl/tpl_c
+/tpl/tpl_c/*
