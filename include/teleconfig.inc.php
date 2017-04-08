@@ -13,6 +13,7 @@ $_SERVER['bot_config'] = [
 function getMysqlCredsForBot()
 {
     if (preg_match('@telehelp_mediapark_group_com@', __DIR__)) {
+        $_SERVER['HTTP_HOST'] = 'telehelp.mediapark-group.com';
         return [
             'host' => 'localhost',
             'user' => 'telehelp_mediapa',
