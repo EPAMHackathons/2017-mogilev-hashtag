@@ -110,13 +110,13 @@
 					</div>
 				</div>
 
-				<div class="control-group">
+				{*<div class="control-group">
 					<label class="control-label" for="telegegram_cmd">Telegram CMD</label>
 
 					<div class="controls">
 						<input type="text"  name="telegegram_cmd" id="telegegram_cmd" value="{$item.telegegram_cmd|escape}">
 					</div>
-				</div>
+				</div>*}
 
 				<div class="control-group">
 					<label class="control-label">Enabled</label>
