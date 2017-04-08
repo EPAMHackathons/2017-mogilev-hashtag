@@ -18,7 +18,7 @@ class SshJob extends BaseJob
             }
             $client = new Client($this->server['ip']);
             $client->connect()->authenticate($auth);
-        } catch (RuntimeException $e) {
+        } catch (Exception $e) {
             print_r($e);
             return "Error while initialising connection: " . $e->getMessage();
         }
