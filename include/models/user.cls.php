@@ -27,6 +27,7 @@
 			if ( !empty($this->fields['id']) ) {
 				//fetch addditional info
                 $res['job_permissions'] = db_getCol("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
+                f
 			}
 			return $res;
 		}
