@@ -12,13 +12,10 @@ class JenkinsJob extends BaseJob {
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
+        curl_setopt($ch, CURLOPT_VERBOSE, FALSE);
         $return = curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
-
-        print_r($info);
-        var_dump($return);
 
         if (empty($return) && $info['http_code'] == '201') {
             return "Ok, build scheduled";
