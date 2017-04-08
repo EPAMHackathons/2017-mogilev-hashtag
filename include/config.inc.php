@@ -10,23 +10,10 @@ $dev_config = array(
         'dbpass' => '',
 
         'admin_folder' => '_admin',
-        'cert_dir' => 'certificates',
-        'goodsDb' => 'ulmart2',
-        'goodsDb_auth' => ['host' => '192.168.6.119:4040', 'user' => 'dz', 'pass' => 'dz'],
-
         'TERM_PROGRAM' => ['apple_terminal'],
-        'smtp' => [
-            'host' => 'ssl://smtp.mail.ru',
-            'port' => 465,
-            'user' => 'leaveittothem@mail.ru',
-            'pass' => 'e29c5f0c8a',
-            'from' => 'leaveittothem@mail.ru'
-        ],
+
     )
 );
-if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == 'podarki:11111') {
-    $dev_config['ru']['dbpass'] = 'root';
-}
 
 $uat_config = array(
     'ru' => array(
@@ -39,17 +26,6 @@ $uat_config = array(
         'dbpass' => 'gv24verliuhqfre7qewrflhi7fqr',
 
         'admin_folder' => 'panel_control_',
-        'cert_dir' => 'certificates',
-        'goodsDb' => 'ulmart2',
-        'goodsDb_auth' => ['host' => '192.168.6.119:4040', 'user' => 'dz', 'pass' => 'dz'],
-        'smtp' => [
-            'host' => 'ssl://smtp.gmail.com',
-            'port' => 465,
-            'user' => 'antalos@gmail.com',
-            'pass' => 'deldel',
-            'from' => 'antalos@gmail.com'
-        ],
-
 
     )
 );
@@ -105,7 +81,6 @@ $_SERVER['prod_config'] = $prod_config;
 
 $_SERVER['mysql_auth'] = array(
     $config['db'] => array('host' => $config['dbhost'], 'user' => $config['dbuser'], 'pass' => $config['dbpass']),
-    $config['goodsDb'] => $config['goodsDb_auth']
 );
 
 
