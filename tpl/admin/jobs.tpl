@@ -74,7 +74,7 @@
 							<label class="control-label" for="command">command</label>
 
 							<div class="controls">
-								<input type="text" class="grd-white" name="command" id="command" value="{$item.command|escape}" required>
+								<textarea class="grd-white" name="command" id="command" required>{$item.command|escape}</textarea>
 															</div>
 						</div>
 									
