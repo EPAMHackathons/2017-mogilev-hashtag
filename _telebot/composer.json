@@ -1,0 +1,12 @@
+{
+    "name": "alex/telebot",
+    "authors": [
+        {
+            "name": "Alexander Savchenkov",
+            "email": "alex@mediapark.lt"
+        }
+    ],
+    "require": {
+        "longman/telegram-bot": "^0.41.0"
+    }
+}
