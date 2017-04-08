@@ -171,7 +171,7 @@
 							<label class="control-label" for="password">password</label>
 
 							<div class="controls">
-								<input type="text" class="grd-white" name="password" id="password" value="{$item.password|escape}">
+								<input type="password" class="grd-white" name="password" id="password" value="{$item.password|escape}">
 							</div>
 						</div>
 									
@@ -218,7 +218,7 @@
 							<label class="control-label" for="key_password">key_password</label>
 
 							<div class="controls">
-								<input type="text" class="grd-white" name="key_password" id="key_password" value="{$item.key_password|escape}">
+								<input type="password" class="grd-white" name="key_password" id="key_password" value="{$item.key_password|escape}">
 							</div>
 						</div>
 				<div class="control-group">
