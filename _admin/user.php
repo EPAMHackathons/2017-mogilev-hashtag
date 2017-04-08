@@ -13,7 +13,7 @@ $items = new user_list();
 $items = $items->get();
 $tpl->assign('items', $items);
 
-$tpl->assign('menu_cat', 'users');
+$tpl->assign('menu_cat', 'user');
 $tpl->tpl = 'user';
 $tpl->render('admin/main.tpl');
 ?>
