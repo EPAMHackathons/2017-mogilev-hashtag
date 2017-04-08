@@ -1,6 +1,7 @@
 <?php
 use Ssh\Client;
 use Ssh\Auth\Password;
+use Ssh\Auth\PublicKey;
 
 
 class JobRunner
@@ -22,7 +23,12 @@ class JobRunner
     function exec()
     {
         try {
-            $auth = new Password($this->creds['login'], $this->creds['password']);
+            if($this->creds['password']){
+                $auth = new Password($this->creds['login'], $this->creds['password']);
+            } elseif ($this->creds['public_key']) {
+                $auth = new PublicKey($this->creds['login'], '/keys/'.$this->creds['public_key'], '/keys/'.$this->creds['private_key'], $this->creds['key_password']);
+            }
+
             $client = new Client($this->server['ip']);
             $client->connect()->authenticate($auth);
         } catch (RuntimeException $e) {
