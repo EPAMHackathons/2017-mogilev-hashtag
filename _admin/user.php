@@ -51,7 +51,6 @@ $tpl->assign('items', $items);
 
 
 $servers = new servers_list();
-$servers->filters[] = "`active` = 1";
 $servers = $servers->get();
 $tpl->assign('servers', $servers);
 
