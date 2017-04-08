@@ -49,7 +49,7 @@ class user extends db_row
 		        jobs.id as job_id,
 		        servers.id as server_id,
 		        servers_credentials.id as credentials_id,
-		        
+		        jobs.command as payload,
 		        jobs.title as job_title,
 		        jobs.need_args as need_args,
 		        jobs.telegegram_cmd as telegegram_cmd,
