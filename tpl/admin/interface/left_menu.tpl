@@ -28,7 +28,7 @@
     <li>
         <a href="/_admin/servers_jobs.php" title="Servers Jobs">
             <div class="helper-font-24"><i class="elusive-list"></i></div>
-            <span class="sidebar-text">Servers Creditals</span>
+            <span class="sidebar-text">Server Jobs</span>
         </a>
     </li>
     <li>
