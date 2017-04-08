@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/Commands/Helpers/HelperCommand.php';
 require_once __DIR__ . '/../include/teleconfig.inc.php';
 require_once __DIR__ . '/../include/init.inc.php';
 

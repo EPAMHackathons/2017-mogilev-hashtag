@@ -7,21 +7,20 @@ use Longman\TelegramBot\Request;
 class HelperCommand extends UserCommand
 {
     protected function sendText($text) {
-        $message = $this->getMessage();
-        $chat_id = $message->getChat()->getId();
-        $text = trim($message->getText(true));
-
         $data = [
-            'chat_id' => $chat_id,
+            'chat_id' => $this->getMessage()->getChat()->getId(),
             'text' => $text,
         ];
-
-        echo "Send";
         return Request::sendMessage($data);
     }
 
+    protected function sendImage($assetName) {
+        $data = ['chat_id' => $this->getMessage()->getChat()->getId()];
+        $result = Request::sendPhoto($data, $_SERVER['bot_config']['asset_dir'] . $assetName);
+    }
+
     private function unAuthorised() {
-        $this->sendText('Thou shall not pass');
+        $this->sendImage('denied.jpg');
     }
 
     private function isValidUser($userId) {
@@ -34,8 +33,7 @@ class HelperCommand extends UserCommand
         $autorId = $msg->from['id'];
         if (!$this->isValidUser($autorId)) return $this->unAuthorised();
 
-        echo "EXecing command, chat_id: $autorId\n";
-        $this->do_execute();
+        return $this->do_execute();
     }
 
 }
