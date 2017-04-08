@@ -90,7 +90,7 @@ class user extends db_row
             if (empty($j['need_args'])) {
                 $a['callback_data'] = 'job_' . $j['job_id'] . '_' . $j['server_id'] . '_' . $j['credentials_id'];
             } else {
-                $a['switch_inline_query_current_chat'] = '/job' . $j['telegegram_cmd'] . ' ' .$j['job_id']. ' ' . $j['login'] . '@' . $j['server_title'] . ' ';
+                $a['switch_inline_query_current_chat'] = '/job' . $j['telegegram_cmd'] . ' ' .$j['job_id']. ' ' . $j['login'] . '@' . $j['server_title'] . ' ' . $j['payload'];
             }
             $kbrd[] = $a;
         }
