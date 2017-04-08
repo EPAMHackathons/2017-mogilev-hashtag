@@ -74,13 +74,13 @@
 									<td>
 										<select name="job_{$serv.id}_{$job.id}_creds" style="float: left;">
 											{foreach from=$serv.credentials item=cred}
-												<option value="{$cred.id}">{$cred.login}</option>
+												<option value="{$cred.id}" {if isset($user.permissions_servers.creds[$serv.id]) && is_array($user.permissions_servers.creds[$serv.id]) && in_array($cred.id,$user.permissions_servers.creds[$serv.id])}selected="selected	"{/if}  >{$cred.login}</option>
 											{/foreach}
 										</select>
 									</td>
 									<td>
 										<label style="float: left;">
-											<input type="checkbox" name="job_{$serv.id}_{$job.id}" value="1" {if isset($user.permissions_servers[$serv.id]) && is_array($user.permissions_servers[$serv.id]) && in_array($job.id,$user.permissions_servers[$serv.id])}checked="checked"{/if}>
+											<input type="checkbox" name="job_{$serv.id}_{$job.id}" value="1" {if isset($user.permissions_servers.jobs[$serv.id]) && is_array($user.permissions_servers.jobs[$serv.id]) && in_array($job.id,$user.permissions_servers.jobs[$serv.id])}checked="checked"{/if}>
 											{$job.title}
 										</label>
 									</td>

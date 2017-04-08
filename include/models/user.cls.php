@@ -33,7 +33,8 @@ class user extends db_row
             $res['job_permissions'] = db_getAll("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
             $permissions = db_getAll("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
             foreach ($permissions as $p) {
-                $res['permissions_servers'][$p['server_id']][] = $p['job_id'];
+                $res['permissions_servers']['jobs'][$p['server_id']][] = $p['job_id'];
+                $res['permissions_servers']['creds'][$p['server_id']][] = $p['credential_id'];
             }
 
         }
