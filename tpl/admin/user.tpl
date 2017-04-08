@@ -67,7 +67,7 @@
 						<tbody>
 						{foreach from=$servers item=serv}
 							<tr>
-								<th rowspan="{$serv.jobs|@count+1}" style="white-space: nowrap">{$serv.name}</th>
+								<th rowspan="{$serv.jobs|@count+1}" style="white-space: nowrap">{$serv.name} <br/> ({$serv.ip})</th>
 							</tr>
 							{foreach from=$serv.jobs item=job name=i}
 								<tr>
