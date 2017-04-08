@@ -28,14 +28,14 @@
 
 	</li>
 
-	<li {if $menu_cat eq 'servers_creditals' }class="active"{/if}>
+	<li {if $menu_cat eq 'servers_credentials' }class="active"{/if}>
 		<a href="/_admin/servers_credentials.php" title="Servers Creditals">
 			<div class="helper-font-24"><i class="elusive-lock-alt"></i></div>
 			<span class="sidebar-text">Servers Creditals</span>
 		</a>
 	</li>
 
-	<li {if $menu_cat eq 'user' }class="active"{/if}>
+	<li {if $menu_cat eq 'users' }class="active"{/if}>
 		<a href="/_admin/user.php" title="Users">
 			<div class="helper-font-24"><i class="elusive-user"></i></div>
 			<span class="sidebar-text">Users</span>

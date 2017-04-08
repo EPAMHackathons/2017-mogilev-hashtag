@@ -81,7 +81,7 @@
 					<div class="controls">
 						<select name="servers[]"  multiple class="chosen">
 							{foreach from=$servers item=server}
-								<option value="{$server.id}" {if in_array($server.id, $item.servers)}selected="selected"{/if}>{$server.name}</option>
+								<option value="{$server.id}" {if is_array($item.servers) && in_array($server.id, $item.servers)}selected="selected"{/if}>{$server.name}</option>
 							{/foreach}
 						</select>
 					</div>

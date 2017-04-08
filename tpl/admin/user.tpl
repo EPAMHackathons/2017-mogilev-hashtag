@@ -80,7 +80,7 @@
 									</td>
 									<td>
 										<label style="float: left;">
-											<input type="checkbox" name="job_{$serv.id}_{$job.id}" value="1">
+											<input type="checkbox" name="job_{$serv.id}_{$job.id}" value="1" {if isset($user.permissions_servers[$serv.id]) && is_array($user.permissions_servers[$serv.id]) && in_array($job.id,$user.permissions_servers[$serv.id])}checked="checked"{/if}>
 											{$job.title}
 										</label>
 									</td>

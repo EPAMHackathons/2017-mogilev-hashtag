@@ -26,7 +26,11 @@
 			$res = array();
 			if ( !empty($this->fields['id']) ) {
 				//fetch addditional info
-                $res['job_permissions'] = db_getCol("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
+                $res['job_permissions'] = db_getAll("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
+                $permissions = db_getAll("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
+                foreach($permissions as $p){
+                    $res['permissions_servers'][$p['server_id']][] = $p['job_id'];
+                }
 
 			}
 			return $res;
