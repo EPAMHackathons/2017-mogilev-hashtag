@@ -23,7 +23,7 @@
 			if ( !empty($this->fields['id']) ) {
 			    $sid = $this->fields['id'];
 				//fetch addditional info
-                $res['credentials'] = db_getAll("SELECT * FROM servers_credentials WHERE server_id = $sid" );
+                $res['credentials'] = db_getAll("SELECT * FROM servers_credentials WHERE server_id = $sid " );
                 $res['jobs'] = db_getAll("SELECT * FROM jobs WHERE id IN (SELECT job_id FROM servers_jobs WHERE server_id = $sid)" );
 			}
 			return $res;

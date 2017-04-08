@@ -94,7 +94,7 @@
 									
 					
 						<div class="control-group">
-							<label class="control-label" for="name">name</label>
+							<label class="control-label" for="name">Server Name</label>
 
 							<div class="controls">
 								<input type="text" class="grd-white" name="name" id="name" value="{$item.name|escape}" required>
@@ -103,7 +103,7 @@
 									
 					
 						<div class="control-group">
-							<label class="control-label" for="ip">ip</label>
+							<label class="control-label" for="ip">Ip</label>
 
 							<div class="controls">
 								<input type="text" class="grd-white" name="ip" id="ip" value="{$item.ip|escape}" required>
@@ -112,7 +112,7 @@
 
 
 				<div class="control-group">
-					<label class="control-label">Активен</label>
+					<label class="control-label">Enabled</label>
 
 					<div class="controls">
 						<label class="checkbox">
@@ -122,7 +122,7 @@
 				</div>
 				
 				<div class="form-actions">
-					<button type="submit" class="btn btn-primary">Сохранить</button>
+					<button type="submit" class="btn btn-primary">Save</button>
 				</div>
 
 			</fieldset>
@@ -148,7 +148,7 @@
 									
 					
 						<div class="control-group">
-							<label class="control-label" for="server_id">server_id</label>
+							<label class="control-label" for="server_id">Server</label>
 							<div class="controls">
 								<select name="server_id" >
 									{section name=i loop=$items}
@@ -159,7 +159,7 @@
 						</div>
 					
 						<div class="control-group">
-							<label class="control-label" for="login">login</label>
+							<label class="control-label" for="login">Login</label>
 
 							<div class="controls">
 								<input type="text" class="grd-white" name="login" id="login" value="{$item.login|escape}" required>
@@ -168,16 +168,16 @@
 									
 					
 						<div class="control-group">
-							<label class="control-label" for="password">password</label>
+							<label class="control-label" for="password">Password</label>
 
 							<div class="controls">
-								<input type="text" class="grd-white" name="password" id="password" value="{$item.password|escape}">
+								<input type="password" class="grd-white" name="password" id="password" value="{$item.password|escape}">
 							</div>
 						</div>
 									
 					
 						<div class="control-group">
-							<label class="control-label" for="public_key">public_key</label>
+							<label class="control-label" for="public_key">Public Key</label>
 
 							<div class="controls">
                                 {if $item.public_key ne ''}
@@ -197,7 +197,7 @@
 
 					
 						<div class="control-group">
-							<label class="control-label" for="private_key">private_key</label>
+							<label class="control-label" for="private_key">Private Key</label>
 							<div class="controls">
                                 {if $item.private_key ne ''}
 									<small>
@@ -215,14 +215,14 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="key_password">key_password</label>
+							<label class="control-label" for="key_password">Password Key</label>
 
 							<div class="controls">
-								<input type="text" class="grd-white" name="key_password" id="key_password" value="{$item.key_password|escape}">
+								<input type="password" class="grd-white" name="key_password" id="key_password" value="{$item.key_password|escape}">
 							</div>
 						</div>
 				<div class="control-group">
-					<label class="control-label">Активен</label>
+					<label class="control-label">Enabled</label>
 
 					<div class="controls">
 						<label class="checkbox">

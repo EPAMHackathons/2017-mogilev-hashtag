@@ -59,7 +59,7 @@
 			{csrf_token post=1}
 			<fieldset>
 				<div class="control-group">
-					<label class="control-label" for="title">Ttile</label>
+					<label class="control-label" for="title">Title</label>
 
 					<div class="controls">
 						<input type="text"  name="title" id="title" value="{$item.title|escape}" required>
