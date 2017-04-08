@@ -15,17 +15,18 @@ use Longman\TelegramBot\Entities\InlineKeyboard;
 use Longman\TelegramBot\Request;
 
 /**
- * User "/inlinekeyboard" command
+ * User "/jobs" command
  */
-class InlinekeyboardCommand extends UserCommand
+class JobsCommand extends UserCommand
 {
     /**#@+
      * {@inheritdoc}
      */
-    protected $name = 'inlinekeyboard';
-    protected $description = 'Show inline keyboard';
-    protected $usage = '/inlinekeyboard';
+    protected $name = 'jobs';
+    protected $description = 'Show list of available jobs';
+    protected $usage = '/jobs';
     protected $version = '0.1.0';
+    protected $enabled = true;
     /**#@-*/
 
     /**
@@ -35,16 +36,12 @@ class InlinekeyboardCommand extends UserCommand
     {
         $chat_id = $this->getMessage()->getChat()->getId();
         $jobs = [
-            ['text' => 'inline', 'callback_data' => 'job1'],
-        ]
+            ['text' => 'Job 1', 'callback_data' => 'job1'],
+            ['text' => 'Job 2', 'callback_data' => 'job2'],
+            ['text' => 'Job 3', 'callback_data' => 'job3']
+        ];
 
-        $inline_keyboard = new InlineKeyboard([
-            ['text' => 'inline', 'switch_inline_query' => $switch_element],
-            ['text' => 'inline current chat', 'switch_inline_query_current_chat' => $switch_element],
-        ], [
-            ['text' => 'callback', 'callback_data' => 'identifier'],
-            ['text' => 'open url', 'url' => 'https://github.com/akalongman/php-telegram-bot'],
-        ]);
+        $inline_keyboard = new InlineKeyboard($jobs);
 
         $data = [
             'chat_id'      => $chat_id,
