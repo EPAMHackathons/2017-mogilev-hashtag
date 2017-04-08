@@ -25,21 +25,22 @@ class JobFactory {
 
         if (!empty($className)) {
             $obj = new $className($jobId, $serverId, $credId, $payload);
-            return $obj->isOk ? $obj->exec($payload) : "Error while initialising worker";
+            return $obj->isOk ? $obj->exec() : "Error while initialising worker";
         }
 
 
         return null;
     }
 
-    static function execShellCmd($server, $cmd) {
+    static function execJob($jobId, $server, $cmd) {
         list($login, $host) = explode('@', $server);
-        var_dump($login, $host);
         $serverId = db_getOne("SELECT id FROM servers WHERE name = '$host' ");
         $cred = db_getOne("SELECT id FROM servers_credentials WHERE login = '$login' ");
-        $job = db_getOne("SELECT id FROM jobs WHERE type = 3 AND active = 1"); //todo: hardcode
+        $job = db_getOne("SELECT id FROM jobs WHERE id = $jobId");
 
         return JobFactory::exec($job, $serverId, $cred, $cmd);
+
     }
+
 }
 ?>

@@ -5,7 +5,7 @@ class BaseJob
 {
     public $isOk = true;
 
-    function __construct($jobId, $serverId, $credId)
+    function __construct($jobId, $serverId, $credId, $payload = false)
     {
         $this->jobId = $jobId;
         $this->serverId = $serverId;
@@ -17,6 +17,14 @@ class BaseJob
 
         if (empty($this->server) || empty($this->job) || empty($this->creds) ) $this->isOk = false;
         if (empty($this->server['active']) || empty($this->creds['active']) || empty($this->job['active']) ) $this->isOk = false;
+
+        if (empty($payload)) {
+            $this->cmds = explode("\n", $this->job['command']);
+        } else {
+            $this->cmds = [$payload];
+        }
+
+        var_dump($this->cmds);
 
     }
 

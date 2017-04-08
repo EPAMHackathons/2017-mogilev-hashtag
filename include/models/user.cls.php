@@ -1,50 +1,57 @@
 <?
-	class user extends db_row {
-		
-		function user($id = NULL) {
-			//$this->use_db = DB_USERS_NAME;
-			$this->table = 'user';
-			$this->pri_key = 'id';
-			$this->autoinc = 1;
-			//$this->parent_key = '';
-			//$this->url_prefix = '/user/';
-			//$this->url_postfix = '.html';
+
+class user extends db_row
+{
+
+    function user($id = NULL)
+    {
+        //$this->use_db = DB_USERS_NAME;
+        $this->table = 'user';
+        $this->pri_key = 'id';
+        $this->autoinc = 1;
+        //$this->parent_key = '';
+        //$this->url_prefix = '/user/';
+        //$this->url_postfix = '.html';
 
 
-			$this->fields['id'] = NULL;
-			$this->fields['first_name'] = NULL;
-			$this->fields['last_name'] = NULL;
-			$this->fields['username'] = NULL;
-			$this->fields['created_at'] = NULL;
-			$this->fields['updated_at'] = NULL;
-			$this->fields['active'] = NULL;
-			
-			parent::__construct($id);
-		}
+        $this->fields['id'] = NULL;
+        $this->fields['first_name'] = NULL;
+        $this->fields['last_name'] = NULL;
+        $this->fields['username'] = NULL;
+        $this->fields['created_at'] = NULL;
+        $this->fields['updated_at'] = NULL;
+        $this->fields['active'] = NULL;
 
-		function get_more_data() {
-			$res = array();
-			if ( !empty($this->fields['id']) ) {
-				//fetch addditional info
-                $res['job_permissions'] = db_getAll("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
-                $permissions = db_getAll("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
-                foreach($permissions as $p){
-                    $res['permissions_servers'][$p['server_id']][] = $p['job_id'];
-                }
+        parent::__construct($id);
+    }
 
-			}
-			return $res;
-		}
+    function get_more_data()
+    {
+        $res = array();
+        if (!empty($this->fields['id'])) {
+            //fetch addditional info
+            $res['job_permissions'] = db_getAll("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
+            $permissions = db_getAll("SELECT * FROM users_permissions WHERE user_id =  " . $this->fields['id']);
+            foreach ($permissions as $p) {
+                $res['permissions_servers'][$p['server_id']][] = $p['job_id'];
+            }
 
-		function getJobs() {
-		    $uid = $this->fields['id'];
+        }
+        return $res;
+    }
 
-		    $allowed = db_getAll("SELECT 
+    function getJobs()
+    {
+        $uid = $this->fields['id'];
+
+        $allowed = db_getAll("SELECT 
 		        jobs.id as job_id,
 		        servers.id as server_id,
 		        servers_credentials.id as credentials_id,
 		        
 		        jobs.title as job_title,
+		        jobs.need_args as need_args,
+		        jobs.telegegram_cmd as telegegram_cmd,
 		        job_types.title as job_type, 
 		        servers.name as server_title,
 		        servers_credentials.login as login,
@@ -60,53 +67,63 @@
 		    WHERE up.user_id = $uid; 
 		    ");
 
-		    $ret = [];
-		    foreach ($allowed as $job) {
-		        if (empty($job['server_active']) || empty($job['credentials_active'])) continue;
-		        $ret[] = $job;
+        $ret = [];
+        foreach ($allowed as $job) {
+            if (empty($job['server_active']) || empty($job['credentials_active'])) continue;
+            $ret[] = $job;
+        }
+        return $ret;
+    }
+
+
+    function getJobsForTelegram()
+    {
+        $jobs = $this->getJobs();
+
+        $kbrd = [];
+        foreach ($jobs as $j) {
+            $a = [
+                'text' => $j['job_title'] . '@' . $j['server_title'] . ' (' . $j['login'] . ')',
+            ];
+
+            if (empty($j['need_args'])) {
+                $a['callback_data'] = 'job_' . $j['job_id'] . '_' . $j['server_id'] . '_' . $j['credentials_id'];
+            } else {
+                $a['switch_inline_query_current_chat'] = '/job' . $j['telegegram_cmd'] . ' ' .$j['job_id']. ' ' . $j['login'] . '@' . $j['server_title'] . ' ';
             }
-            return $ret;
+            $kbrd[] = $a;
         }
 
+        return $kbrd;
+    }
 
-		function getJobsForTelegram() {
-		    $jobs = $this->getJobs();
-
-		    $kbrd = [];
-		    foreach ($jobs as $j) {
-                $kbrd[] = [
-                    'text' => $j['job_title'].'@'.$j['server_title'] .' ('.$j['login'].')',
-                    'callback_data' => 'job_'.$j['job_id'].'_'.$j['server_id'].'_'.$j['credentials_id']
-                ];
+    function getServersForExec()
+    {
+        $res = [];
+        $jobs = $this->getJobs();
+        foreach ($jobs as $j) {
+            if ($j['job_type'] == "SSH cmd") {
+                $res[] = ['login' => $j['login'], 'server' => $j['server_title']];
             }
-
-		    return $kbrd;
         }
 
-        function getServersForExec() {
-		    $res = [];
-            $jobs = $this->getJobs();
-            foreach ($jobs as $j) {
-                if ($j['job_type'] == "SSH cmd") {
-                    $res[] = ['login' => $j['login'], 'server' => $j['server_title']];
-                }
-            }
+        return $res;
+    }
 
-            return $res;
-        }
+}
 
-	}
+class user_list extends db_list
+{
 
-	class user_list extends db_list {
+    function user_list()
+    {
+        $this->single_element_class = 'user';
+        $this->table = 'user';
+        $this->sort_by = 'id';
+        $this->sort_mode = 'desc';
+        $this->items_per_page = 10;
+    }
 
-		function user_list() {
-			$this->single_element_class = 'user';
-			$this->table = 'user';
-			$this->sort_by = 'id';
-			$this->sort_mode = 'desc';
-			$this->items_per_page = 10;
-		}
-
-	}
+}
 
 ?>

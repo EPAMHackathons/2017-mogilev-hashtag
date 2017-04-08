@@ -15,14 +15,14 @@ use Longman\TelegramBot\Entities\Keyboard;
 /**
  * User "/jobs" command
  */
-class ExecCommand extends HelperCommand
+class JobCommand extends HelperCommand
 {
     /**#@+
      * {@inheritdoc}
      */
-    protected $name = 'exec';
-    protected $description = 'Exec comand on remote server';
-    protected $usage = '/exec {serverId} {cmd}';
+    protected $name = 'job';
+    protected $description = 'Exec job';
+    protected $usage = '/job {jobId} {serverId} {cmd}';
     protected $version = '0.1.0';
     protected $enabled = true;
     /**#@-*/
@@ -42,16 +42,20 @@ class ExecCommand extends HelperCommand
             foreach ($server as $s) $msg .= "* $s[login]@$s[server]\n";
 
         } else {
+            var_dump($command);
             $data = explode(' ', $command);
+            print_r($data);
 
-            if (empty($data[0]) || empty($data[1])) {
-                $msg = "You should specify server and command";
+            if (empty($data[0]) || empty($data[1]) || empty($data[2])) {
+                $msg = "You should specify job, server and args";
             } else {
-                $server = $data[0];
+                $server = $data[1];
+                $jobId = $data[0];
                 unset($data[0]);
+                unset($data[1]);
                 $cmd = implode(' ', $data);
 
-                $res = \JobFactory::execShellCmd($server, $cmd);
+                $res = \JobFactory::execJob($jobId, $server, $cmd);
                 $msg = $res === null ? "Failed to create job" : '``` '.$res.'```';
             }
         }

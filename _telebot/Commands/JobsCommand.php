@@ -34,7 +34,7 @@ class JobsCommand extends HelperCommand
 
         $data = [
             'chat_id'      => $chat_id,
-            'text'         => 'inline keyboard',
+            'text'         => 'Available jobs',
             'reply_markup' => $inline_keyboard,
         ];
 
