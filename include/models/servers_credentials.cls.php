@@ -6,7 +6,7 @@
 			$this->table = 'servers_credentials';
 			$this->pri_key = 'id';
 			$this->autoinc = 1;
-			//$this->parent_key = '';
+			$this->parent_key = 'server_id';
 			//$this->url_prefix = '/servers_credentials/';
 			//$this->url_postfix = '.html';
 
@@ -17,8 +17,8 @@
 			$this->fields['password'] = NULL;
 			$this->fields['public_key'] = NULL;
 			$this->fields['private_key'] = NULL;
-
-            parent::__construct($id);
+			
+			parent::__construct($id);
 		}
 
 		function get_more_data() {

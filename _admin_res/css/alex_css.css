@@ -244,3 +244,6 @@ div.uploader span.filename {
     padding:5px;
     width:42px;
 }
+.sidebar > li{
+    height: auto !important;
+}

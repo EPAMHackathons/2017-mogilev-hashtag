@@ -6,12 +6,6 @@
             <span class="sidebar-text">Главная</span>
         </a>
     </li>
-    <li {if $menu_cat eq 'servers' }class="active"{/if}>
-        <a href="/_admin/servers.php" title="Servers">
-            <div class="helper-font-24"><i class="fa fa-bank"></i></div>
-            <span class="sidebar-text">Servers</span>
-        </a>
-    </li>
     <li {if $menu_cat eq 'jobs' }class="active"{/if}>
         <a href="/_admin/jobs.php" title="Jobs">
             <div class="helper-font-24"><i class="elusive-rss"></i></div>
@@ -21,7 +15,7 @@
 
     <li {if $menu_cat eq 'servers_creditals' }class="active"{/if}>
         <a href="/_admin/servers_credentials.php" title="Servers Creditals">
-            <div class="helper-font-24"><i class="elusive-list"></i></div>
+            <div class="helper-font-24"><i class="elusive-lock-alt"></i></div>
             <span class="sidebar-text">Servers Creditals</span>
         </a>
     </li>

@@ -14,8 +14,8 @@
 			$this->fields['id'] = NULL;
 			$this->fields['name'] = NULL;
 			$this->fields['ip'] = NULL;
-
-            parent::__construct($id);
+			
+			parent::__construct($id);
 		}
 
 		function get_more_data() {

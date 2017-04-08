@@ -25,8 +25,8 @@
 						
 					</td>
 					<td class="w100 link {if $items[i].active eq '0'}nonActive{/if}" >
-						<a href="?act=edit&id={$items[i].id}">{$items[i].title}</a>
-																	</td>
+						<a href="?act=edit&id={$items[i].id}">{$items[i].name} ({$items[i].ip})</a>
+					</td>
 				</tr>
 								{sectionelse}
 				<tr>
@@ -53,31 +53,25 @@
 			<input type="hidden" name="act" value="save">
 			{csrf_token post=1}
 			<fieldset>
-				
-									
-					
 						<div class="control-group">
 							<label class="control-label" for="name">name</label>
 
 							<div class="controls">
 								<input type="text" class="grd-white" name="name" id="name" value="{$item.name|escape}" required>
-															</div>
+							</div>
 						</div>
-									
-					
+
 						<div class="control-group">
 							<label class="control-label" for="ip">ip</label>
 
 							<div class="controls">
 								<input type="text" class="grd-white" name="ip" id="ip" value="{$item.ip|escape}" required>
-															</div>
+							</div>
 						</div>
-									
-				
+
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Сохранить</button>
 				</div>
-
 			</fieldset>
 		</form>
 	</div>
