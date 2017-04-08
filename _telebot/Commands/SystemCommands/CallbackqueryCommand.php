@@ -41,7 +41,6 @@ class CallbackqueryCommand extends SystemCommand
      */
     public function execute()
     {
-        echo "INDA CALLBACK [this]";
         $update = $this->getUpdate();
         $callback_query = $update->getCallbackQuery();
         $callback_query_id = $callback_query->getId();
@@ -52,16 +51,16 @@ class CallbackqueryCommand extends SystemCommand
             $jobId = $m[1];
             $serverId = $m[2];
             $credId = $m[3];
+            echo $callback_data."\n";
 
-            $job = JobFactory::exec($jobId, $serverId, $credId);
-            if ($job !== null) {
+            $result = \JobFactory::exec($jobId, $serverId, $credId);
+            if ($result !== null) {
                 $data = [
                     'chat_id' => $chatId,
                     'parse_mode' => 'MARKDOWN',
                     'text' => "Executing job",
                 ];
                 Request::sendMessage($data);
-                $result = $job->exec();
             } else {
                 $result = "Failed to create job";
             }
@@ -78,8 +77,6 @@ class CallbackqueryCommand extends SystemCommand
         $msgData = $data;
         $msgData['parse_mode'] = 'MARKDOWN';
         $msgData['text'] = '``` ' . $data['text'] . '```';
-        print_r($data);
-        print_r($msgData);
         Request::sendMessage($msgData);
 
         return Request::answerCallbackQuery($data);

@@ -27,9 +27,10 @@ class JobsCommand extends HelperCommand
     {
         $chat_id = $this->getMessage()->getChat()->getId();
         $jobs = $this->user->getJobsForTelegram();
+        $rows = [];
+        foreach ($jobs as $j)  $rows[] = [$j];
 
-
-        $inline_keyboard = new InlineKeyboard($jobs);
+        $inline_keyboard = new InlineKeyboard( ...$rows);
 
         $data = [
             'chat_id'      => $chat_id,

@@ -83,6 +83,18 @@
 		    return $kbrd;
         }
 
+        function getServersForExec() {
+		    $res = [];
+            $jobs = $this->getJobs();
+            foreach ($jobs as $j) {
+                if ($j['job_type'] == "SSH cmd") {
+                    $res[] = ['login' => $j['login'], 'server' => $j['server_title']];
+                }
+            }
+
+            return $res;
+        }
+
 	}
 
 	class user_list extends db_list {

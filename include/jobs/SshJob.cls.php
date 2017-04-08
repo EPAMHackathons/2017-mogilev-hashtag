@@ -4,11 +4,11 @@ use Ssh\Auth\Password;
 use Ssh\Auth\PublicKey;
 
 
-class JobRunner
+class SshJob extends BaseJob
 {
     public $isOk = true;
 
-    function __construct($jobId, $serverId, $credId)
+    function __construct($jobId, $serverId, $credId, $payload = false)
     {
         $this->jobId = $jobId;
         $this->serverId = $serverId;
@@ -17,6 +17,13 @@ class JobRunner
         $this->server = db_getRow("SELECT * FROM servers WHERE id = " . $this->serverId);
         $this->job = db_getRow("SELECT * FROM jobs WHERE id = " . $this->jobId);
         $this->creds = db_getRow("SELECT * FROM servers_credentials WHERE id = " . $this->credId);
+
+        if (empty($payload)) {
+            $this->cmds = explode("\n", $this->job['command']);
+        } else {
+            $this->cmds = [$payload];
+        }
+
 
     }
 
@@ -37,9 +44,11 @@ class JobRunner
         }
 
 
-        $cmds = explode("\n", $this->job['command']);
+        echo "Do exec\n";
+        print_r($this->cmds);
+
         $ret = [];
-        foreach ($cmds as $cmd) {
+        foreach ($this->cmds as $cmd) {
             $cmd = trim($cmd);
             $ret[] = 'cmd> ' . $cmd;
             $res = $client->exec($cmd);;
