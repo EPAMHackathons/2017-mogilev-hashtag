@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f5f18dd8f8ed0348c4dfb641853418f6",
-    "content-hash": "813fa5ac18ea0f3d780877470b024d84",
+    "hash": "ab6ffe3af66050e60ba2ac5470740470",
+    "content-hash": "31437dbe7f052a94ef09edc1fa27f6d7",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -317,6 +317,22 @@
             "time": "2017-03-13 07:08:03"
         },
         {
+            "name": "oncesk/ssh2",
+            "version": "master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oncesk/ssh2.git",
+                "reference": "master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "time": "2014-06-19 08:42:49"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -416,9 +432,9 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
