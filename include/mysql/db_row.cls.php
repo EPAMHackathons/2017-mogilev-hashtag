@@ -112,6 +112,9 @@ class db_row
 
 		if ($this->has_field('img_fname')) $this->init_img_fname();
 		if ($this->has_field('fname')) $this->init_fname();
+		if ($this->has_field('public_key')) $this->init_f_pbk();
+		if ($this->has_field('private_key')) $this->init_f_prk();
+
 	}
 
 	//*** delete from DB  ***//
@@ -294,6 +297,17 @@ class db_row
 	{
 		return $this->upload_file('fname', 'new_fname', '/files/'.$this->table, array('pdf', 'doc', 'docx', 'rtf', 'xls', 'xlsx', 'zip', 'rar'));
 	}
+	function init_f_prk()
+	{
+	    $file_name = $this->fields['server_id'] . '_' . $this->fields['login'] . '.pri';
+	    return $this->upload_key('private_key', 'new_private_key', 'keys', $file_name);
+	}
+	function init_f_pbk()
+	{
+        $file_name = $this->fields['server_id'] . '_' . $this->fields['login'] . '.pub';
+
+		return $this->upload_key('public_key', 'new_public_key', 'keys', $file_name);
+	}
 
 	function remove_file()
 	{
@@ -324,13 +338,13 @@ class db_row
 			$file = $_FILES[$fileKey];
 
 			if ($file['error'] != '0') {
-				flashbag_put('Ошибка при добавлении файла ' . $field, 'error');
+			   flashbag_put('Ошибка при добавлении файла ' . $field, 'error');
 				return false;
 			}
 
 			$info = pathinfo(strtolower($file['name']));
 			if (!in_array($info['extension'], $allowed)) {
-				flashbag_put('Нельзя закачать файл ' . $field . ' с раширением ' . $info['extension'] . '. Разрешенные расширения: ' . implode(', ', $allowed) . ' ( ' . $file['name'] . ' )', 'error');
+			   flashbag_put('Нельзя закачать файл ' . $field . ' с раширением ' . $info['extension'] . '. Разрешенные расширения: ' . implode(', ', $allowed) . ' ( ' . $file['name'] . ' )', 'error');
 				return false;
 			}
 
@@ -347,12 +361,49 @@ class db_row
 			}
 
 			if (move_uploaded_file($file['tmp_name'], DOC_ROOT . '/' . $dir . $new)) {
+                umask(0);
+                chmod(DOC_ROOT . '/' . $dir . $new, 600);
 				db_query("UPDATE " . $this->table . " SET `" . $field . "`='$new' WHERE id = " . $this->fields['id']);
 			}
-
 		}
 
 	}
+
+    function upload_key($field, $fileKey, $dir, $file_name)
+    {
+        if (isset($_FILES[$fileKey]) && !empty($_FILES[$fileKey]['name'])) {
+
+            $dir .= '/';
+            @mkdir(DOC_ROOT . '/' . $dir);
+
+            $file = $_FILES[$fileKey];
+
+            if ($file['error'] != '0') {
+                flashbag_put('Ошибка при добавлении файла ' . $field, 'error');
+                return false;
+            }
+
+            $info = pathinfo(strtolower($file['name']));
+
+            if (!empty($this->fields[$field])) {
+                @unlink(DOC_ROOT . '/' . $dir . $this->fields[$field]);
+                db_query("UPDATE " . $this->table . " SET `" . $field . "`='' WHERE id = " . $this->fields['id']);
+            }
+
+            $n = 0;
+            while (file_exists(DOC_ROOT . '/' . $dir . $file_name)) {
+                ++$n;
+                $file_name = gen_url($info['filename']) . '-' . $n . '.' . $info['extension'];
+            }
+
+            if (move_uploaded_file($file['tmp_name'], DOC_ROOT . '/' . $dir . $file_name)) {
+                umask(0);
+                chmod(DOC_ROOT . '/' . $dir . $file_name, 600);
+                db_query("UPDATE " . $this->table . " SET `" . $field . "`='$file_name' WHERE id = " . $this->fields['id']);
+            }
+        }
+
+    }
 
 	function escape_fields() {
 		foreach ($this->fields as $k=>$v) $this->fields[$k] = mysql_real_escape_string($v);

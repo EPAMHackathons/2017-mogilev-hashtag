@@ -17,7 +17,8 @@
 			$this->fields['password'] = NULL;
 			$this->fields['public_key'] = NULL;
 			$this->fields['private_key'] = NULL;
-			
+			$this->fields['key_password'] = NULL;
+
 			parent::__construct($id);
 		}
 

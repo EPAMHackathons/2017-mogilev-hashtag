@@ -93,7 +93,7 @@
 
 							<div class="controls">
 								<input type="text" class="grd-white" name="name" id="name" value="{$item.name|escape}" required>
-															</div>
+							</div>
 						</div>
 									
 					
@@ -124,7 +124,7 @@
 		<span>{section name=i loop=$admin_titles}{if $admin_titles[i].key eq $menu_cat}{$admin_titles[i].title}{/if}{sectionelse}{$table}{/section}</span>
 	</div>
 	<div class="box-body">
-		<form method="post" class="form-validate form-horizontal form-alex" >
+		<form method="post" class="form-validate form-horizontal form-alex" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="{$item.id}">
 			<input type="hidden" name="act" value="child_save">
 			{csrf_token post=1}
@@ -165,19 +165,47 @@
 							<label class="control-label" for="public_key">public_key</label>
 
 							<div class="controls">
-								<input type="text" class="grd-white" name="public_key" id="public_key" value="{$item.public_key|escape}" >
-															</div>
+                                {if $item.public_key ne ''}
+									<small><a href="/keys/{$item.public_key}?rand={$smarty.now}" target="_blank">{$item.public_key}</a></small>
+									<br/>
+									<br/>
+									<small><a href="?act=del_file&id={$item.id}{csrf_token}" class="confirmMe" style="text-decoration: underline">Удалить</a></small>
+									<br/>
+                                {/if}
+								<div class="uploader" id="uniform-inputUpload">
+									<input type="file" name="new_public_key" data-form="uniform" id="inputUpload" size="19" style="opacity: 0;">
+									<span class="filename">Не выбран файл</span>
+									<span class="action">Выбрать</span>
+								</div>
+							</div>
 						</div>
-									
+
 					
 						<div class="control-group">
 							<label class="control-label" for="private_key">private_key</label>
-
 							<div class="controls">
-								<input type="text" class="grd-white" name="private_key" id="private_key" value="{$item.private_key|escape}">
+                                {if $item.private_key ne ''}
+									<small>
+										<a href="/keys/{$item.private_key}?rand={$smarty.now}" target="_blank"> {$item.private_key}</a></small>
+									<br/>
+									<br/>
+									<small><a href="?act=del_file&id={$item.id}{csrf_token}" class="confirmMe" style="text-decoration: underline">Удалить</a></small>
+									<br/>
+                                {/if}
+								<div class="uploader" id="uniform-inputUpload">
+									<input type="file" name="new_private_key" data-form="uniform" id="inputUpload" size="19" style="opacity: 0;">
+									<span class="filename">Не выбран файл</span>
+									<span class="action">Выбрать</span>
+								</div>
 							</div>
 						</div>
-									
+						<div class="control-group">
+							<label class="control-label" for="key_password">key_password</label>
+
+							<div class="controls">
+								<input type="text" class="grd-white" name="key_password" id="key_password" value="{$item.key_password|escape}">
+							</div>
+						</div>
 				
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Сохранить</button>

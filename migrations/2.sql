@@ -1,0 +1,1 @@
+ALTER TABLE `servers_credentials` ADD `key_password` VARCHAR(255) NOT NULL AFTER `private_key`;
