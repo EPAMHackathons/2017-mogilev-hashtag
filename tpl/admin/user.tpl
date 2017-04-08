@@ -30,7 +30,8 @@
 						
 					</td>
 					<td class="w100 link {if $items[i].active eq '0'}nonActive{/if}" >
-						<a href="?act=edit&id={$items[i].id}">{$items[i].title}</a>
+						<a href="?act=edit&id={$items[i].id}">
+							{$items[i].first_name} {$items[i].last_name} ({$items[i].username})</a>
 																	</td>
 				</tr>
 								{sectionelse}
