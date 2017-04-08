@@ -25,7 +25,7 @@ $uat_config = array(
         'dbuser' => 'podarki',
         'dbpass' => 'gv24verliuhqfre7qewrflhi7fqr',
 
-        'admin_folder' => 'panel_control_',
+        'admin_folder' => '_admin',
 
     )
 );
@@ -41,7 +41,7 @@ $prod_config = array(
         'dbuser' => 'telehelp_mediapa',
         'dbpass' => 'HT5uCD5lG4KCwqR7',
 
-        'admin_folder' => 'panel_control_',
+        'admin_folder' => '_admin',
         'cert_dir' => 'certificates',
         'PWD' => ['/home/savchenkov.a/www/_cronjobs']
     )

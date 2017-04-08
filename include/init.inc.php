@@ -10,9 +10,7 @@ auto_include(DOC_ROOT . '/include/models', DOC_ROOT . '/include/models');
 auto_include(DOC_ROOT . '/include/jobs', DOC_ROOT . '/include/jobs');
 
 if (!defined('NO_SMARTY')) {
-    if (preg_match('@^/' . $_SERVER['serv_config']['admin_folder'] . '[\.]?/@', $_SERVER['REQUEST_URI']) ||
-        preg_match('@^/_admin_res[\.]?/@', $_SERVER['REQUEST_URI'])
-    ) {
+    if (preg_match('@^/' . $_SERVER['serv_config']['admin_folder'] . '[\.]?/@', $_SERVER['REQUEST_URI']) || preg_match('@^/_admin_res[\.]?/@', $_SERVER['REQUEST_URI'])) {
         load_smarty();
         $tpl = new Page();
 
