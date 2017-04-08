@@ -69,9 +69,10 @@ if (!empty($config)) {
 
 
     if(!empty($_SERVER['force_errors'])) {
-        ini_set('display_errors', 0);
-    } else {
         error_reporting(E_ALL); ini_set('display_errors', 1);
+
+    } else {
+        ini_set('display_errors', 0);
     }
 }
 
