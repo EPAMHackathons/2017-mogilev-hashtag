@@ -4,6 +4,8 @@ require __DIR__ . '/Commands/Helpers/HelperCommand.php';
 require_once __DIR__ . '/../include/teleconfig.inc.php';
 require_once __DIR__ . '/../include/init.inc.php';
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 try {
     // Create Telegram API object

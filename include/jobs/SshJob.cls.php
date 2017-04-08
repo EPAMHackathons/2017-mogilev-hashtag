@@ -16,7 +16,6 @@ class SshJob extends BaseJob
             } elseif ($this->creds['public_key']) {
                 $auth = new PublicKey($this->creds['login'], '/keys/'.$this->creds['public_key'], '/keys/'.$this->creds['private_key'], $this->creds['key_password']);
             }
-
             $client = new Client($this->server['ip']);
             $client->connect()->authenticate($auth);
         } catch (RuntimeException $e) {
