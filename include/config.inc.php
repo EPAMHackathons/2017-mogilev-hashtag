@@ -73,9 +73,7 @@ if (!empty($config)) {
     } else {
         error_reporting(E_ALL); ini_set('display_errors', 1);
     }
-
 }
-print_r($config);
 
 if (empty($config)) die('cant get config');
 

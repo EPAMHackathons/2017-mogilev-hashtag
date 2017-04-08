@@ -24,8 +24,6 @@ class BaseJob
             $this->cmds = [$payload];
         }
 
-        var_dump($this->cmds);
-
     }
 
 
