@@ -57,26 +57,16 @@ $uat_config = array(
 
 $prod_config = array(
     'ru' => array(
-        'hosts' => array('podarki.ulmart.ru', 'www.podarki.ulmart.ru'),
-        'def_host' => 'domain.com',
+        'hosts' => array('telehelp.mediapark-group.com', 'www.telehelp.mediapark-group.com'),
+        'def_host' => 'telehelp.mediapark-group.com',
 
-        'db' => 'ulmart2_podarki',
-        'dbhost' => '192.168.6.119',
-        'dbuser' => 'podarki',
-        'dbpass' => 'Aev1ie6Xee',
+        'db' => 'telehelp_mediapa',
+        'dbhost' => 'localhost',
+        'dbuser' => 'telehelp_mediapa',
+        'dbpass' => 'HT5uCD5lG4KCwqR7',
 
         'admin_folder' => 'panel_control_',
         'cert_dir' => 'certificates',
-        'goodsDb' => 'ulmart2',
-        'goodsDb_auth' => ['host' => '192.168.6.119:4040', 'user' => 'dz', 'pass' => 'dz'],
-        'smtp' => [
-            'host' => 'mailsite.ulmart.ru',
-            'port' => 25,
-            'user' => 'podarki@ulmart.ru',
-            'pass' => '',
-            'from' => 'podarki@ulmart.ru'
-        ],
-
         'PWD' => ['/home/savchenkov.a/www/_cronjobs']
     )
 );

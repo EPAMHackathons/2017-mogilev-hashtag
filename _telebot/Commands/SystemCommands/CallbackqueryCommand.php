@@ -63,7 +63,6 @@ class CallbackqueryCommand extends SystemCommand
             } else {
                 $result = "Failed to create job";
             }
-
         } else {
             $result = 'Something went wrong';
         }
