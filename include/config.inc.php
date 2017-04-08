@@ -2,7 +2,7 @@
 
 $dev_config = array(
     'ru' => array(
-        'hosts' => array('telehelp.ru', 'www.telehelp.ru'),
+        'hosts' => array('telehelp.ru', 'www.telehelp.ru', 'telehelp.local'),
         'def_host' => 'telehelp.ru',
         'db' => 'telehelp',
         'dbhost' => 'localhost',

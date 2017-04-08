@@ -16,16 +16,11 @@
 					<th>Заголовок</th>
 				</tr>
 				</thead>
-				<tbody data-table="users">
+				<tbody data-table="user">
 				{section name=i loop=$items}
 				<tr data-itemid="{$items[i].id}" >
 					<td nowrap class="actions" >
 												<a href="?act=edit&id={$items[i].id}" title="Edit"><i class="icon-edit"></i></a>
-													{if $items[i].active eq '1'}
-								<a href="?act=deactivate&id={$items[i].id}" title="Отключить"><i class="icon-remove"></i></a>
-							{else}
-								<a href="?act=activate&id={$items[i].id}" title="Включить"><i class="icon-ok"></i></a>
-							{/if}
 												<a href="?act=delete&id={$items[i].id}{csrf_token}" title="Удалить" class="confirmMe"><i class="icon-trash"></i></a>
 						
 					</td>
@@ -62,6 +57,24 @@
 									
 					
 						<div class="control-group">
+							<label class="control-label" for="first_name">first_name</label>
+
+							<div class="controls">
+								<input type="text" class="grd-white" name="first_name" id="first_name" value="{$item.first_name|escape}" required>
+															</div>
+						</div>
+									
+					
+						<div class="control-group">
+							<label class="control-label" for="last_name">last_name</label>
+
+							<div class="controls">
+								<input type="text" class="grd-white" name="last_name" id="last_name" value="{$item.last_name|escape}" required>
+															</div>
+						</div>
+									
+					
+						<div class="control-group">
 							<label class="control-label" for="username">username</label>
 
 							<div class="controls">
@@ -71,21 +84,20 @@
 									
 					
 						<div class="control-group">
-							<label class="control-label" for="telegram_id">telegram_id</label>
+							<label class="control-label" for="created_at">created_at</label>
 
 							<div class="controls">
-								<input type="text" class="grd-white" name="telegram_id" id="telegram_id" value="{$item.telegram_id|escape}" required>
+								<input type="text" class="grd-white" name="created_at" id="created_at" value="{$item.created_at|escape}" required>
 															</div>
 						</div>
 									
-											<div class="control-group">
-							<label class="control-label">Активен</label>
+					
+						<div class="control-group">
+							<label class="control-label" for="updated_at">updated_at</label>
 
 							<div class="controls">
-								<label class="checkbox">
-									<input type="checkbox" data-form="uniform" name="active" id="active1" value="1" {if $item.active eq '1'}checked="checked"{/if}>
-								</label>
-							</div>
+								<input type="text" class="grd-white" name="updated_at" id="updated_at" value="{$item.updated_at|escape}" required>
+															</div>
 						</div>
 									
 				
