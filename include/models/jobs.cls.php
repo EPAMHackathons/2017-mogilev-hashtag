@@ -16,7 +16,9 @@
 			$this->fields['command'] = NULL;
 			$this->fields['type'] = NULL;
 			$this->fields['active'] = NULL;
-			
+			$this->fields['need_args'] = NULL;
+			$this->fields['telegegram_cmd'] = NULL;
+
 			parent::__construct($id);
 		}
 

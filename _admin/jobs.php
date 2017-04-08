@@ -14,6 +14,7 @@ switch ($act) {
         unset($_POST['id']);
 
         if (empty($_POST['active'])) $_POST['active'] = 0;
+        if (empty($_POST['need_args'])) $_POST['need_args'] = 0;
 
         $item = new jobs($id);
         $item->from_array($_POST);

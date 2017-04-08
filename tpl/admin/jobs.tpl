@@ -101,6 +101,24 @@
 				</div>
 
 				<div class="control-group">
+					<label class="control-label">Need Args</label>
+
+					<div class="controls">
+						<label class="checkbox">
+							<input type="checkbox" data-form="uniform" name="need_args" id="need_args" value="1" {if $item.need_args eq '1'}checked="checked"{/if}>
+						</label>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="telegegram_cmd">Telegram CMD</label>
+
+					<div class="controls">
+						<input type="text"  name="telegegram_cmd" id="telegegram_cmd" value="{$item.telegegram_cmd|escape}">
+					</div>
+				</div>
+
+				<div class="control-group">
 					<label class="control-label">Enabled</label>
 
 					<div class="controls">
