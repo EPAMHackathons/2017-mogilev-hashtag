@@ -10,10 +10,11 @@ switch ($act) {
 	validate_csrf_token();
 
 	$id = (empty($_POST['id'])) ? NULL : intval($_POST['id']);
+
 	foreach ($_POST as $k => $v) if (!is_array($v)) $_POST[$k] = trim($v);
 	unset($_POST['id']);
-	
-	
+
+    if (empty($_POST['active'])) $_POST['active'] = 0;
 	
 	$item = new servers($id);
 	$item->from_array($_POST);
@@ -58,8 +59,8 @@ case 'delete':
 	$id = (empty($_POST['id'])) ? NULL : intval($_POST['id']);
 	foreach ($_POST as $k => $v) if (!is_array($v)) $_POST[$k] = trim($v);
 	unset($_POST['id']);
-	
-	
+
+    if (empty($_POST['active'])) $_POST['active'] = 0;
 	
 	$item = new servers_credentials($id);
 	$item->from_array($_POST);
@@ -98,7 +99,23 @@ case 'child_delete':
 	flashbag_put('Изменения сохранены');
 	redirect($ru);
 	break;
+case 'activate':
+    db_query("UPDATE `servers` SET active='1' WHERE id='$id'");
+    redirect($ru);
+    break;
+case 'deactivate':
+    db_query("UPDATE `servers` SET active='0' WHERE id='$id'");
+    redirect($ru);
+    break;
 
+case 'child_activate':
+    db_query("UPDATE `servers_credentials` SET active='1' WHERE id='$id'");
+    redirect($ru);
+    break;
+case 'child_deactivate':
+    db_query("UPDATE `servers_credentials` SET active='0' WHERE id='$id'");
+    redirect($ru);
+    break;
 
 
 
