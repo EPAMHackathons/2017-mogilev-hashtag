@@ -44,6 +44,59 @@
 		</div>
 	</div>
 {elseif $act eq 'edit'}
+	<div class="span12">
+		<div class="box corner-all">
+			<div class="box-header grd-white corner-top">
+				<div class="header-control">
+					<a data-box="collapse"><i class="icofont-caret-up"></i></a>
+				</div>
+				<span>Permission matrix for {$user.username} ({$user.first_name} {$user.last_name})</span>
+			</div>
+			<div class="box-body">
+				<form method="post" class="form-validate form-horizontal form-alex">
+					<input type="hidden" name="id" value="{$user.id}">
+					<input type="hidden" name="act" value="save">
+					<table class="table table-bordered table-striped responsive ">
+						<thead>
+						<tr>
+							<th>Server</th>
+							<th>Credential</th>
+							<th class="w100">Job</th>
+						</tr>
+						</thead>
+						<tbody>
+						{foreach from=$servers item=serv}
+							<tr>
+								<th rowspan="{$serv.jobs|@count+1}" style="white-space: nowrap">{$serv.name}</th>
+							</tr>
+							{foreach from=$serv.jobs item=job name=i}
+								<tr>
+									<td>
+										<select name="job_{$serv.id}_{$job.id}_creds" style="float: left;">
+											{foreach from=$serv.credentials item=cred}
+												<option value="{$cred.id}">{$cred.login}</option>
+											{/foreach}
+										</select>
+									</td>
+									<td>
+										<label style="float: left;">
+											<input type="checkbox" name="job_{$serv.id}_{$job.id}" value="1">
+											{$job.title}
+										</label>
+									</td>
+								</tr>
+							{/foreach}
+						{/foreach}
 
+						</tbody>
+					</table>
+
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">Сохранить</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 {/if}
 	

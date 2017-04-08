@@ -43,29 +43,12 @@
 	</li>
 
 
-	{if $admin_user->has_permission('config') || $admin_user->has_permission('users') }
-		<li>
-
-			<a href="/_admin/config.php" title="Настройки">
-				<div class="badge">1</div>
-				<div class="helper-font-24"><i class="elusive-cog-alt"></i></div>
-				<span class="sidebar-text">Настройки</span>
+	{if  $admin_user->has_permission('admin_users') }
+		<li {if $menu_cat eq 'admin_users' }class="active"{/if}>
+			<a href="/_admin/admin_users.php" title="Admins">
+				<div class="helper-font-24"><i class="elusive-cog"></i></div>
+				<span class="sidebar-text">Admins</span>
 			</a>
-
-
-			<ul class="sub-sidebar corner-top shadow-silver-dark">
-
-				{if $admin_user->isRoot() }
-					<li>
-						<a href="/_admin/admin_users.php" title="Администраторы">
-							<div class="helper-font-24"><i class="icofont-user"></i></div>
-							<span class="sidebar-text">Администраторы</span>
-						</a>
-					</li>
-				{/if}
-
-			</ul>
-
 		</li>
 	{/if}
 

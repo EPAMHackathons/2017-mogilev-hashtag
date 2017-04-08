@@ -58,10 +58,8 @@
 			<input type="hidden" name="act" value="save">
 			{csrf_token post=1}
 			<fieldset>
-
-
 				<div class="control-group">
-					<label class="control-label" for="title">title</label>
+					<label class="control-label" for="title">Ttile</label>
 
 					<div class="controls">
 						<input type="text"  name="title" id="title" value="{$item.title|escape}" required>
@@ -70,16 +68,28 @@
 
 
 				<div class="control-group">
-					<label class="control-label" for="command">command</label>
+					<label class="control-label" for="command">Payload</label>
 
 					<div class="controls">
 						<textarea  name="command" id="command" required>{$item.command|escape}</textarea>
 					</div>
 				</div>
 
+				<div class="control-group">
+					<label class="control-label" for="type">Servers</label>
+
+					<div class="controls">
+						<select name="servers[]"  multiple class="chosen">
+							{foreach from=$servers item=server}
+								<option value="{$server.id}" {if in_array($server.id, $item.servers)}selected="selected"{/if}>{$server.name}</option>
+							{/foreach}
+						</select>
+					</div>
+				</div>
+
 
 				<div class="control-group">
-					<label class="control-label" for="type">type</label>
+					<label class="control-label" for="type">Type</label>
 
 					<div class="controls">
 						<select name="type"  required>
@@ -91,7 +101,7 @@
 				</div>
 
 				<div class="control-group">
-					<label class="control-label">Активен</label>
+					<label class="control-label">Enabled</label>
 
 					<div class="controls">
 						<label class="checkbox">

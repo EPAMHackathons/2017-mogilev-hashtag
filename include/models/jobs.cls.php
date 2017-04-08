@@ -24,6 +24,7 @@
 			$res = array();
 			if ( !empty($this->fields['id']) ) {
 				//fetch addditional info
+                $res['servers'] = db_getCol("SELECT server_id FROM servers_jobs WHERE job_id = '".$this->fields['id']."'");
 			}
 			return $res;
 		}

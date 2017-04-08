@@ -15,10 +15,17 @@ switch ($act) {
 
         if (empty($_POST['active'])) $_POST['active'] = 0;
 
-
         $item = new jobs($id);
         $item->from_array($_POST);
         $item->save();
+
+        $jobId = $item->fields['id'];
+        db_query("DELETE FROM servers_jobs WHERE job_id = $jobId");
+        $servers = array_unique($_POST['servers']);
+        foreach ($servers as $sid) {
+            $sid = intval($sid);
+            db_query("INSERT INTO servers_jobs SET job_id = $jobId,  server_id = $sid");
+        }
 
         flashbag_put('Изменения сохранены');
         redirect($ru);
@@ -64,6 +71,9 @@ $items = new job_types_list();
 $items = $items->get();
 $tpl->assign('types', $items);
 
+
+$servers = db_getAll("SELECT * FROM servers");
+$tpl->assign('servers', $servers);
 
 $tpl->assign('menu_cat', 'jobs');
 $tpl->tpl = 'jobs';
