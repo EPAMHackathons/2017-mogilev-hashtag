@@ -51,7 +51,6 @@ class CallbackqueryCommand extends SystemCommand
             $jobId = $m[1];
             $serverId = $m[2];
             $credId = $m[3];
-            echo $callback_data."\n";
 
             $result = \JobFactory::exec($jobId, $serverId, $credId);
             if ($result !== null) {

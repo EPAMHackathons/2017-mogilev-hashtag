@@ -44,9 +44,6 @@ class SshJob extends BaseJob
         }
 
 
-        echo "Do exec\n";
-        print_r($this->cmds);
-
         $ret = [];
         foreach ($this->cmds as $cmd) {
             $cmd = trim($cmd);
