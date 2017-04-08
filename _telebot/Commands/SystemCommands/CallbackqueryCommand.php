@@ -42,30 +42,45 @@ class CallbackqueryCommand extends SystemCommand
     public function execute()
     {
         echo "INDA CALLBACK [this]";
-        $update            = $this->getUpdate();
-        $callback_query    = $update->getCallbackQuery();
+        $update = $this->getUpdate();
+        $callback_query = $update->getCallbackQuery();
         $callback_query_id = $callback_query->getId();
-        $callback_data     = $callback_query->getData();
-        print_r($callback_query);
+        $callback_data = $callback_query->getData();
+        $chatId = $callback_query->raw_data['message']['chat']['id'];
+
+        if (preg_match('@^job_(\d+)_(\d+)_(\d+)@', $callback_data, $m)) {
+            $jobId = $m[1];
+            $serverId = $m[2];
+            $credId = $m[3];
+
+            $job = new \JobRunner($jobId, $serverId, $credId);
+            if ($job->isOk) {
+                $data = [
+                    'chat_id' => $chatId,
+                    'parse_mode' => 'MARKDOWN',
+                    'text' => "Executing job",
+                ];
+                Request::sendMessage($data);
+                $result = $job->exec();
+            } else {
+                $result = "Failed to create job";
+            }
+
+        } else {
+            $result = 'Something went wrong';
+        }
+
 
         $data = [
-            'callback_query_id' => $callback_query_id,
-            'text'              => 'Hello World!',
-            'show_alert'        => true
+            'chat_id' => $chatId,
+            'text' => $result,
         ];
-
-
-
-        $msg = $callback_query->raw_data['message'];
-        $chat_id = $msg['chat']['id'];
-
-
-        $data = [
-            'chat_id' => $chat_id,
-            'text' => 'Callback data: ' . $callback_data,
-        ];
-
-        Request::sendMessage($data);
+        $msgData = $data;
+        $msgData['parse_mode'] = 'MARKDOWN';
+        $msgData['text'] = '``` ' . $data['text'] . '```';
+        print_r($data);
+        print_r($msgData);
+        Request::sendMessage($msgData);
 
         return Request::answerCallbackQuery($data);
     }

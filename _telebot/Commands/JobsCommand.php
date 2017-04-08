@@ -26,11 +26,8 @@ class JobsCommand extends HelperCommand
     public function do_execute()
     {
         $chat_id = $this->getMessage()->getChat()->getId();
-        $jobs = [
-            ['text' => 'Job 1', 'callback_data' => 'job1'],
-            ['text' => 'Job 2', 'callback_data' => 'job2'],
-            ['text' => 'Job 3', 'callback_data' => 'job3']
-        ];
+        $jobs = $this->user->getJobsForTelegram();
+
 
         $inline_keyboard = new InlineKeyboard($jobs);
 

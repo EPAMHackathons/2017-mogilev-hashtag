@@ -6,16 +6,14 @@ use Ssh\Client;
 use Ssh\Auth\Password;
 use Ssh\Shell;
 
-$auth = new Password('alex', 'xcsPhtOAGLlLrzdn');
-$client = new Client('148.251.120.12');
+$auth = new Password('antalos', '8737Ad4b621cBaF544A21bD8A25640Ef');
+$client = new Client('5.9.99.210');
 
-/*error_reporting(E_ALL);
-var_dump($auth);
+error_reporting(E_ALL);
 $client->connect()->authenticate($auth);
-echo $client->exec('top | ');
+echo $client->exec('id');
 echo $client->exec('grep 1');
-*/
-
+die;
 /*
 
 try {

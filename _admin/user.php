@@ -38,6 +38,7 @@ switch ($act) {
     case 'edit':
         $user = new user($id);
         $user = $user->to_array();
+
         $tpl->assign('user', $user);
         break;
 

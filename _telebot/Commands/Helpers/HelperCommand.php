@@ -32,6 +32,7 @@ class HelperCommand extends UserCommand
         $msg = $this->getMessage();
         $autorId = $msg->from['id'];
         if (!$this->isValidUser($autorId)) return $this->unAuthorised();
+        $this->user = new \user($autorId);
 
         return $this->do_execute();
     }

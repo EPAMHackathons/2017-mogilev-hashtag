@@ -32,6 +32,53 @@
 			return $res;
 		}
 
+		function getJobs() {
+		    $uid = $this->fields['id'];
+
+		    $allowed = db_getAll("SELECT 
+		        jobs.id as job_id,
+		        servers.id as server_id,
+		        servers_credentials.id as credentials_id,
+		        
+		        jobs.title as job_title,
+		        job_types.title as job_type, 
+		        servers.name as server_title,
+		        servers_credentials.login as login,
+		        
+		        servers.active as server_active,
+		        servers_credentials.active as credentials_active
+		    FROM 
+		        users_permissions as up
+            LEFT JOIN jobs ON jobs.id = up.job_id
+            LEFT JOIN job_types ON job_types.id = jobs.type
+            LEFT JOIN servers ON servers.id = up.server_id
+            LEFT JOIN servers_credentials ON servers_credentials.id = up.credential_id
+		    WHERE up.user_id = $uid; 
+		    ");
+
+		    $ret = [];
+		    foreach ($allowed as $job) {
+		        if (empty($job['server_active']) || empty($job['credentials_active'])) continue;
+		        $ret[] = $job;
+            }
+            return $ret;
+        }
+
+
+		function getJobsForTelegram() {
+		    $jobs = $this->getJobs();
+
+		    $kbrd = [];
+		    foreach ($jobs as $j) {
+                $kbrd[] = [
+                    'text' => $j['job_title'].'@'.$j['server_title'] .' ('.$j['login'].')',
+                    'callback_data' => 'job_'.$j['job_id'].'_'.$j['server_id'].'_'.$j['credentials_id']
+                ];
+            }
+
+		    return $kbrd;
+        }
+
 	}
 
 	class user_list extends db_list {
